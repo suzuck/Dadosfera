@@ -12,16 +12,16 @@ def get_conection():
     )  
     return conn
 
-def create_tables():
+def create_tb_trip():
     #dropa e recria tabela principal para input de dados
     conn = get_conection()
 
     cursor = conn.cursor()
     
     sql = """
-        DROP TABLE IF EXISTS TX_TRIP;
+        DROP TABLE IF EXISTS TB_TRIP;
         
-        CREATE TABLE TX_TRIP (
+        CREATE TABLE TB_TRIP (
         VENDOR_ID VARCHAR(6),
         PICKUP_DATETIME TIMESTAMP,
         DROPOFF_DATETIME TIMESTAMP,
@@ -49,6 +49,61 @@ def create_tables():
 
     print(f'close')
     conn.close()
+
+def create_tb_vendor():
+    #dropa e recria tabela principal para input de dados
+    conn = get_conection()
+
+    cursor = conn.cursor()
+    
+    sql = """
+        DROP TABLE IF EXISTS TB_VENDOR;
+        
+        CREATE TABLE TB_VENDOR (
+        VENDOR_ID VARCHAR(10) NULL,
+        NAME VARCHAR(100) NULL,
+        ADDRESS VARCHAR(200) NULL,
+        CITY VARCHAR(30) NULL,
+        STATE VARCHAR(2) NULL,
+        ZIP INT NULL,
+        COUNTRY VARCHAR(3) NULL,
+        CONTACT VARCHAR(100) NULL,
+        CURRENT VARCHAR(3) NULL
+    );
+    """
+    print(sql)
+    cursor.execute(sql)
+
+    print(f'commit')
+    conn.commit()  
+
+    print(f'close')
+    conn.close()
+
+
+def create_tb_payment():
+    #dropa e recria tabela principal para input de dados
+    conn = get_conection()
+
+    cursor = conn.cursor()
+    
+    sql = """
+        DROP TABLE IF EXISTS TB_PAYMENT;
+        
+        CREATE TABLE TB_PAYMENT (
+            PAYMENT_TYPE VARCHAR(15),
+            PAYMENT_LOOKUP VARCHAR(50)
+        );
+    """
+    print(sql)
+    cursor.execute(sql)
+
+    print(f'commit')
+    conn.commit()  
+
+    print(f'close')
+    conn.close()
+
 
 def insert(tabela,frame):
     conn = get_conection()
