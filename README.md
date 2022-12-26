@@ -70,3 +70,9 @@ QRY calculo media de tempo corridas por semana
     ) BS
     GROUP BY WEEK, NAME 
     LIMIT 100
+
+QRY Extração latitute e longitude 2010
+
+    select pickup_latitude||','||pickup_longitude
+    from public.tb_trip
+    where extract(year from dropoff_datetime) = 2010
