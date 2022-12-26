@@ -7,9 +7,9 @@ import db_instruction
 def lambda_handler(event, context):
 
     # s3 parameters
-    S3_ID = 'AKIASHEMMY5CCHM45LL5'
-    S3_PASS = 'fCOhM2mQnzbqOkCwvnO47tGVH6sibfccI/nHk5Nn'
-    S3_BUCKET = "teste-dados-fera"
+    S3_ID = 'AKIASHEMMY5CBBUIZU5T'
+    S3_PASS = 'A9xX7KQ/JUMxh42F589IDxhuAITlP6+0zlPZRAjD'
+    S3_BUCKET = "dados-fera"
     S3_DIRETORIO = "raw/"
     s3 = boto3.client('s3',aws_access_key_id = S3_ID , aws_secret_access_key = S3_PASS)
     s3_files = s3.list_objects(Bucket=S3_BUCKET,Prefix=S3_DIRETORIO)
@@ -37,7 +37,11 @@ def lambda_handler(event, context):
 
         file = obj.get()['Body'].read().decode('utf-8')
 
-        file = '['+file.replace('\n',',')+']'
+        file = '['+file.replace('\n',',')
+        
+        file = file[0:len(file)-1] +']'
+
+        
 
         file = json.loads(file)
 
