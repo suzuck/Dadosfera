@@ -7,10 +7,18 @@ Dados Fera
     3-Criar bucket S3 para recebimento de arquivos e realizar input na base de dados
 
 📦 Estrutura de pastas
- 
+    
     Dadosfera
         ├───Excell
         │       Extratificação.xlsx --> Planilha contendo extratifições e graficos dos desafios)
+        │
+        ├───html
+        │   │   index.html --> Pagina HTML contendo marcadores das coordenadas de corridas de 2010
+        │   │
+        │   └───jscss --> Psta contendo codigos JAVA Script
+        │           default.css
+        │           default.js
+        │           marcadores.js
         │
         └───Script
                 db_instruction.py --> Script Py com metodos e dados de acesso a banco
